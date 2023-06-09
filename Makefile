@@ -98,7 +98,7 @@ BREW_SDL2 := $(shell brew --prefix sdl2)
 BREW_JPEGTURBO := $(shell brew --prefix jpeg-turbo)
 BREW_VORBIS := $(shell brew --prefix libvorbis)
 BREW_OPENAL := $(shell brew --prefix openal-soft)
-BREW_MBEDTLS := $(shell brew --prefix mbedtls)
+BREW_MBEDTLS := $(shell brew --prefix mbedtls@2)
 BREW_LIBPNG := $(shell brew --prefix libpng)
 BREW_LIBOGG := $(shell brew --prefix libogg)
 BREW_LIBUV := $(shell brew --prefix libuv)
@@ -194,7 +194,7 @@ src/std/regexp.o: src/std/regexp.c
 	${CC} ${CFLAGS} -o $@ -c $< ${PCRE_FLAGS}
 
 libhl: ${LIB}
-	${CC} ${CFLAGS} -o libhl.$(LIBEXT) -m${MARCH} ${LIBFLAGS} ${LHL_LINK_FLAGS} -shared ${LIB} -lpthread -lm
+	${CC} ${CFLAGS} -o libhl.$(LIBEXT) -m${MARCH} ${LIBFLAGS} -shared ${LIB} -lpthread -lm
 
 hlc: ${BOOT}
 	${CC} ${CFLAGS} -o hlc ${BOOT} ${LFLAGS} ${EXTRA_LFLAGS}
